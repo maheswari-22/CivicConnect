@@ -1,0 +1,407 @@
+/* =========================================================
+   Portal sidebar: one design for Citizen, Authority, Worker.
+   --sidebar-w is what every page uses to line up with it.
+   ========================================================= */
+
+:root {
+  --sidebar-w: 250px;
+  --sidebar-w-collapsed: 80px;
+}
+
+body.sidebar-collapsed {
+  --sidebar-w: var(--sidebar-w-collapsed);
+}
+
+/* Below 960px the sidebar is replaced by the hamburger drawer. */
+@media (max-width: 959px) {
+  :root,
+  body.sidebar-collapsed {
+    --sidebar-w: 0px;
+  }
+}
+
+.cc-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  width: var(--sidebar-w);
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 16px 16px;
+  box-sizing: border-box;
+
+  background: #FFFBF2;
+  border-right: 1px solid rgba(59, 1, 11, 0.08);
+  box-shadow: 10px 0 40px rgba(59, 1, 11, 0.06);
+
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+
+  transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cc-sidebar *,
+.cc-sidebar *::before,
+.cc-sidebar *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Brand: logo on top, portal tag underneath ---------- */
+
+.cc-sidebar__brand {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0 4px 16px;
+  margin-bottom: 14px;
+
+  border-bottom: 1px solid #F3EAD3;
+}
+
+.cc-sidebar__logo {
+  display: block;
+  width: 124px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 auto 6px;
+  object-fit: contain;
+}
+
+.cc-sidebar__mark {
+  display: none;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.cc-sidebar__tag {
+  margin-top: 4px;
+  padding: 5px 14px;
+
+  color: #560B18;
+  background: #F8EBC8;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------- Navigation ---------- */
+
+.cc-sidebar__nav {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.cc-sidebar__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cc-sidebar__label {
+  margin: 2px 0 6px;
+  padding: 0 14px;
+
+  color: #8C7B72;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cc-sidebar__link,
+.cc-sidebar__logout {
+  position: relative;
+
+  width: 100%;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 14px;
+
+  color: #560B18;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cc-sidebar__link svg,
+.cc-sidebar__logout svg {
+  flex: 0 0 20px;
+}
+
+.cc-sidebar__text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cc-sidebar__link:hover {
+  background: rgba(59, 1, 11, 0.06);
+}
+
+.cc-sidebar__link--active,
+.cc-sidebar__link--active:hover {
+  background: #E3C078;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(227, 192, 120, 0.22);
+}
+
+.cc-sidebar__badge {
+  margin-left: auto;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #FFF8EA;
+  background: #560B18;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.cc-sidebar__link--active .cc-sidebar__badge {
+  background: #560B18;
+}
+
+.cc-sidebar__link:focus-visible,
+.cc-sidebar__logout:focus-visible,
+.cc-sidebar__user:focus-visible {
+  outline: 3px solid rgba(59, 1, 11, 0.3);
+  outline-offset: 2px;
+}
+
+/* ---------- Footer: user card + logout ---------- */
+
+.cc-sidebar__footer {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-top: 14px;
+  border-top: 1px solid #F3EAD3;
+}
+
+.cc-sidebar__user {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 12px;
+
+  color: #560B18;
+  background: #F8F2E3;
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+}
+
+.cc-sidebar__user:hover {
+  background: #F3EAD3;
+}
+
+.cc-sidebar__avatar {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #F2D9A0;
+  background: #560B18;
+  border-radius: 50%;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cc-sidebar__user-info {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cc-sidebar__user-info strong {
+  color: #560B18;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cc-sidebar__user-info small {
+  color: #8C7B72;
+  font-size: 12px;
+  font-weight: 500;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cc-sidebar__dot {
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+
+  background: #22a06b;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(34, 160, 107, 0.18);
+}
+
+.cc-sidebar__logout {
+  color: #b3261e;
+  font-weight: 600;
+}
+
+.cc-sidebar__logout:hover {
+  background: #fdecec;
+}
+
+/* ---------- Collapsed rail ---------- */
+
+.cc-sidebar--collapsed {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.cc-sidebar--collapsed .cc-sidebar__logo,
+.cc-sidebar--collapsed .cc-sidebar__tag,
+.cc-sidebar--collapsed .cc-sidebar__label,
+.cc-sidebar--collapsed .cc-sidebar__text,
+.cc-sidebar--collapsed .cc-sidebar__user-info,
+.cc-sidebar--collapsed .cc-sidebar__dot,
+.cc-sidebar--collapsed .cc-sidebar__badge {
+  display: none;
+}
+
+.cc-sidebar--collapsed .cc-sidebar__mark {
+  display: block;
+}
+
+.cc-sidebar--collapsed .cc-sidebar__link,
+.cc-sidebar--collapsed .cc-sidebar__logout {
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+
+.cc-sidebar--collapsed .cc-sidebar__user {
+  justify-content: center;
+  padding: 8px 0;
+  background: transparent;
+}
+
+/* ---------- Short screens: the logo shrinks first, the menu scrolls last ---------- */
+
+@media (max-height: 820px) {
+  .cc-sidebar {
+    padding-top: 14px;
+    padding-bottom: 12px;
+  }
+
+  .cc-sidebar__brand {
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+
+  .cc-sidebar__logo {
+    width: 132px;
+    margin-top: -4px;
+  }
+
+  .cc-sidebar__link,
+  .cc-sidebar__logout {
+    min-height: 46px;
+  }
+
+  .cc-sidebar__user-info small {
+    display: none;
+  }
+}
+
+@media (max-height: 640px) {
+  .cc-sidebar__logo {
+    width: 104px;
+  }
+
+  .cc-sidebar__label {
+    display: none;
+  }
+
+  .cc-sidebar__link,
+  .cc-sidebar__logout {
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 959px) {
+  .cc-sidebar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-sidebar,
+  .cc-sidebar__link {
+    transition: none;
+  }
+}
+
+/* An urgent badge (open emergencies / overdue work) pulses red so it cannot be overlooked. */
+.cc-sidebar__badge--urgent { background: #b91c1c !important; color: #fff !important; animation: ccEmergencyPulse 1.6s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .cc-sidebar__badge--urgent { animation: none; } }

@@ -1,0 +1,273 @@
+/* Civic Connect Authority Module */
+
+body{
+    margin:0;
+    padding:0;
+    background:#F8F2E3;
+    font-family: inherit;
+}
+
+a{
+    text-decoration:none;
+}
+
+button{
+    cursor:pointer;
+}
+/* =====================================================
+   AUTHORITY DASHBOARD WELCOME CARD
+   ===================================================== */
+
+.authority-welcome-card {
+  width: 100%;
+  min-height: 390px;
+
+  background: #560B18;
+
+  border-radius: 22px;
+
+  box-sizing: border-box;
+
+  margin: 0 0 35px 0;
+
+  overflow: hidden;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 55px 70px;
+
+  color: #FFF8EA;
+}
+
+
+/* Welcome card content */
+
+.authority-welcome-content {
+  width: 100%;
+  max-width: 900px;
+}
+
+
+/* Authority Module badge */
+
+.authority-module-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  background: rgba(255, 248, 234, 0.14);
+
+  padding: 12px 22px;
+
+  border-radius: 30px;
+
+  color: #FFF8EA;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 32px;
+}
+
+
+/* Yellow dot */
+
+.badge-dot {
+  width: 14px;
+  height: 14px;
+
+  background: #F2D9A0;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  flex-shrink: 0;
+}
+
+
+/* Welcome heading */
+
+.welcome-title {
+  margin: 0;
+
+  color: #FFF8EA;
+
+  font-size: 64px;
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+
+/* Authority! */
+
+.welcome-title span {
+  display: block;
+
+  color: #F2D9A0;
+
+  margin-top: 5px;
+}
+
+
+/* Good Morning / Afternoon / Evening */
+
+.time-greeting {
+  margin: 18px 0 8px 0;
+
+  color: #F2D9A0;
+
+  font-size: 22px;
+
+  font-weight: 700;
+}
+
+
+/* Description */
+
+.welcome-description {
+  margin: 0;
+
+  max-width: 850px;
+
+  color: rgba(255, 248, 234, 0.9);
+
+  font-size: 20px;
+
+  line-height: 1.6;
+
+  font-weight: 400;
+}
+
+
+/* View Complaints button */
+
+.view-complaints-button {
+  margin-top: 28px;
+
+  padding: 16px 30px;
+
+  background: #F2D9A0;
+
+  color: #560B18;
+
+  border: none;
+
+  border-radius: 14px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+
+.view-complaints-button span {
+  margin-left: 8px;
+
+  font-size: 21px;
+}
+
+
+.view-complaints-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   AUTHORITY OVERVIEW
+   ===================================================== */
+
+.authority-overview-section {
+  width: 100%;
+
+  margin-top: 5px;
+}
+
+
+.authority-overview-section h2 {
+  margin: 0 0 25px 0;
+
+  color: #560B18;
+
+  font-size: 30px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1000px) {
+
+  .authority-welcome-card {
+    padding: 45px 40px;
+
+    min-height: 360px;
+  }
+
+  .welcome-title {
+    font-size: 52px;
+  }
+
+  .welcome-description {
+    font-size: 18px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .authority-welcome-card {
+    padding: 35px 25px;
+
+    min-height: 330px;
+
+    border-radius: 18px;
+  }
+
+  .authority-module-badge {
+    font-size: 15px;
+
+    padding: 10px 16px;
+
+    margin-bottom: 24px;
+  }
+
+  .welcome-title {
+    font-size: 42px;
+  }
+
+  .time-greeting {
+    font-size: 18px;
+  }
+
+  .welcome-description {
+    font-size: 16px;
+  }
+
+  .view-complaints-button {
+    font-size: 16px;
+
+    padding: 14px 22px;
+  }
+
+}

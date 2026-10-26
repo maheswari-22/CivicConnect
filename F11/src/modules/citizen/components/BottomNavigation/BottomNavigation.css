@@ -1,0 +1,86 @@
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 600;
+  width: min(420px, calc(100% - 24px));
+  margin-bottom: var(--safe-bottom);
+}
+
+.bottom-nav__inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  min-height: 68px;
+  padding: 6px;
+  background: rgba(255, 248, 234, 0.94);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(59, 1, 11, 0.08);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 16px 40px rgba(59, 1, 11, 0.18), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bottom-nav__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  transition: color var(--dur-base) ease, background var(--dur-base) ease;
+}
+
+.bottom-nav__icon-wrap { position: relative; display: flex; transition: transform var(--dur-base) ease; }
+
+.bottom-nav__item--active {
+  color: var(--primary);
+  background: rgba(59, 1, 11, 0.07);
+}
+.bottom-nav__item--active .bottom-nav__icon-wrap { transform: translateY(-2px); }
+
+.bottom-nav__item--active::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  width: 16px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+}
+
+.bottom-nav__dot {
+  position: absolute;
+  top: -2px; right: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1.5px solid var(--surface);
+}
+
+.bottom-nav__fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transform: translateY(-14px);
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--dur-base) ease, background var(--dur-base) ease;
+}
+.bottom-nav__fab:hover { background: var(--accent-light); }
+.bottom-nav__fab:active { transform: translateY(-14px) scale(0.94); }
+
+@media (min-width: 480px) {
+  .bottom-nav { bottom: 22px; }
+}

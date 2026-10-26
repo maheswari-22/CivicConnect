@@ -1,0 +1,561 @@
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ASSIGNED TASKS PAGE
+========================================================= */
+
+.assigned-page {
+  width: 100%;
+  min-height: calc(100vh - 40px);
+  padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.assigned-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+  margin-bottom: 42px;
+}
+
+.assigned-header h1 {
+  margin: 0;
+
+  color: #560B18;
+
+  font-size: 48px;
+  line-height: 1.15;
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+.assigned-header > div:first-child > p:last-child {
+  margin: 16px 0 0;
+
+  color: #6F5B55;
+
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   ACTIVE TASK COUNT
+========================================================= */
+
+.task-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 105px;
+
+  padding: 14px 16px;
+
+  border: 1px solid rgba(227, 192, 120, 0.55);
+  border-radius: 15px;
+
+  background: #FFFBF2;
+
+  /* GOLD SHADOW */
+  box-shadow:
+    0 8px 20px rgba(227, 192, 120, 0.38),
+    0 4px 12px rgba(217, 177, 90, 0.25),
+    0 2px 7px rgba(59, 1, 11, 0.10);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   ACTIVE TASK COUNT HOVER
+========================================================= */
+
+.task-count:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  box-shadow:
+    0 14px 30px rgba(227, 192, 120, 0.48),
+    0 6px 17px rgba(217, 177, 90, 0.30),
+    0 3px 9px rgba(59, 1, 11, 0.12);
+}
+
+
+/* =========================================================
+   ACTIVE TASK NUMBER
+========================================================= */
+
+.task-count strong {
+  color: #560B18;
+
+  font-size: 28px;
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   ACTIVE TASK LABEL
+========================================================= */
+
+.task-count span {
+  margin-top: 5px;
+
+  color: #6F5B55;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   TASK GRID
+========================================================= */
+
+.assigned-task-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+
+/* =========================================================
+   TASK CARD
+========================================================= */
+
+.assigned-task-card {
+  min-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(59, 1, 11, 0.07);
+  border-radius: 20px;
+
+  background: #FFFBF2;
+
+  box-shadow:
+    0 10px 30px rgba(59, 1, 11, 0.06);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CARD LIFT
+========================================================= */
+
+.assigned-task-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 40px rgba(59, 1, 11, 0.11);
+}
+
+
+/* =========================================================
+   IMAGE AREA
+========================================================= */
+
+.assigned-image-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 230px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  background: #F3EAD3;
+
+  border-radius: 20px 20px 0 0;
+}
+
+
+/* =========================================================
+   TASK IMAGE
+========================================================= */
+
+.assigned-task-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transform: scale(1);
+
+  cursor: zoom-in;
+
+  transition:
+    transform 0.5s ease;
+}
+
+
+/* =========================================================
+   IMAGE ZOOM
+========================================================= */
+
+.assigned-task-image.image-zoomed {
+  transform: scale(2);
+
+  cursor: zoom-out;
+}
+
+
+/* =========================================================
+   PRIORITY BADGE
+========================================================= */
+
+.priority-badge {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 9px 12px;
+
+  border-radius: 50px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  backdrop-filter: blur(8px);
+
+  z-index: 2;
+}
+
+.priority-badge.high {
+  background: rgba(255, 245, 245, 0.96);
+
+  color: #c44747;
+}
+
+.priority-badge.medium {
+  background: rgba(255, 251, 242, 0.97);
+
+  color: #8A6218;
+}
+
+
+/* =========================================================
+   TASK CONTENT
+========================================================= */
+
+.assigned-task-content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px;
+}
+
+
+/* =========================================================
+   TASK TOP
+========================================================= */
+
+.assigned-task-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.assigned-task-top h2 {
+  margin: 0;
+
+  color: #560B18;
+
+  font-size: 21px;
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.task-status-badge {
+  flex-shrink: 0;
+
+  padding: 7px 11px;
+
+  border-radius: 50px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.task-status-badge.pending {
+  background: rgba(217, 177, 90, 0.14);
+
+  color: #8A6218;
+}
+
+
+/* =========================================================
+   TASK INFORMATION
+========================================================= */
+
+.assigned-task-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  margin-top: 17px;
+}
+
+.assigned-task-info div {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #8C7B72;
+
+  font-size: 14px;
+}
+
+.assigned-task-info svg {
+  flex-shrink: 0;
+
+  color: #560B18;
+}
+
+
+/* =========================================================
+   DETAILS BUTTON
+========================================================= */
+
+.task-details-button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: auto;
+
+  padding: 14px 15px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: #560B18;
+
+  color: #FFF8EA;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.task-details-button:hover {
+  background: #560B18;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(59, 1, 11, 0.20);
+}
+
+.task-details-button svg {
+  transition: transform 0.25s ease;
+}
+
+.task-details-button:hover svg {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) and (min-width: 601px) {
+
+  .assigned-header {
+    margin-bottom: 32px;
+  }
+
+  .assigned-header h1 {
+    font-size: 40px;
+  }
+
+  .assigned-header > div:first-child > p:last-child {
+    font-size: 17px;
+  }
+
+  .assigned-task-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+  }
+
+  .assigned-task-card {
+    min-height: 430px;
+  }
+
+  .assigned-image-wrapper {
+    height: 210px;
+  }
+
+  .assigned-task-top h2 {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .assigned-page {
+    min-height: auto;
+
+    padding-bottom: 90px;
+  }
+
+  .assigned-header {
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+  }
+
+  .assigned-header h1 {
+    font-size: 32px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .assigned-header > div:first-child > p:last-child {
+    margin-top: 12px;
+
+    font-size: 14px;
+  }
+
+  .task-count {
+    min-width: 82px;
+
+    padding: 10px 12px;
+  }
+
+  .task-count strong {
+    font-size: 23px;
+  }
+
+  .task-count span {
+    font-size: 9px;
+  }
+
+  .assigned-task-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .assigned-task-card {
+    min-height: 420px;
+  }
+
+  .assigned-image-wrapper {
+    height: 200px;
+  }
+
+  .assigned-task-content {
+    padding: 18px;
+  }
+
+  .assigned-task-top h2 {
+    font-size: 18px;
+  }
+
+  .assigned-task-info div {
+    font-size: 13px;
+  }
+
+  .task-details-button {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .assigned-header h1 {
+    font-size: 29px;
+  }
+
+  .assigned-header > div:first-child > p:last-child {
+    font-size: 13px;
+  }
+
+  .task-count {
+    min-width: 76px;
+
+    padding: 9px 10px;
+  }
+
+  .task-count strong {
+    font-size: 21px;
+  }
+
+  .assigned-task-card {
+    min-height: 400px;
+  }
+
+  .assigned-image-wrapper {
+    height: 180px;
+  }
+}
+/* top-right, so it never sits on top of the priority chip in the top-left */
+.assigned-emergency { position: absolute; top: 12px; right: 12px; left: auto; z-index: 3; }

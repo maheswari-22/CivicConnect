@@ -1,0 +1,33 @@
+/* Breakpoint reference (used consistently across component CSS):
+   xs: 0–374px   small phones
+   sm: 375–429px  standard phones
+   md: 430–767px  large phones
+   tablet: 768–959px
+   desktop: 960–1279px
+   xl: 1280px+
+*/
+
+.hide-mobile { display: none; }
+.hide-desktop { display: initial; }
+
+@media (min-width: 960px) {
+  .hide-mobile { display: initial; }
+  .hide-desktop { display: none; }
+}
+
+.grid-auto {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .grid-auto { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .grid-auto { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

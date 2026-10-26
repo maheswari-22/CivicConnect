@@ -1,0 +1,242 @@
+/* Layout primitives, type, buttons, tabs, reveal. Shared by every section. */
+
+html { scroll-behavior: smooth; }
+html { overflow-x: clip; }
+body { overflow-x: hidden; overflow-x: clip; }
+section { position: relative; }
+[id] { scroll-margin-top: 90px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.block { padding: 96px 0; }
+
+h2 {
+  font-family: var(--font-display);
+  color: var(--maroon);
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold-ink);
+}
+
+.head { max-width: 760px; margin-bottom: 40px; }
+.head p { color: var(--muted); margin-top: 14px; line-height: 1.7; }
+.head-center { max-width: 820px; margin-inline: auto; text-align: center; }
+.lead { color: var(--muted); margin: 14px 0 22px; line-height: 1.7; }
+
+.section-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--burgundy);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
+}
+
+/* ---------- scroll reveal (see hooks/useScrollReveal.js) ---------- */
+
+.reveal:not([data-in]) {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(8px);
+}
+
+.reveal[data-in] {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) backwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(26px); filter: blur(8px); }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes flow { to { background-position: 16px 0; } }
+
+/* ---------- chips, tabs, buttons ---------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  color: var(--c);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.tabs-sm { margin-bottom: 14px; }
+
+.tab {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.tab:hover { border-color: var(--gold-line); color: var(--maroon); transform: translateY(-2px); }
+.tab.on { background: var(--maroon); color: var(--on-dark); border-color: var(--maroon); }
+.tabs-sm .tab { padding: 6px 12px; font-size: 13px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 2px solid var(--maroon);
+  background: var(--card);
+  color: var(--maroon);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.btn:hover {
+  background: var(--maroon);
+  color: var(--on-dark);
+  box-shadow: 0 10px 22px -8px rgba(59, 1, 11, 0.45);
+}
+
+/* Magnetic buttons lean toward the pointer (values set by shared/metallic.js)
+   and lift a little on hover. Declared once so every button type behaves alike. */
+[data-magnetic] { transform: translate(var(--tx, 0px), var(--ty, 0px)); }
+[data-magnetic]:hover { transform: translate(var(--tx, 0px), calc(var(--ty, 0px) - 3px)); }
+
+/* ---------- tiles (problem + role cards) ---------- */
+
+.grid-3 { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background-color: var(--card);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s, border-color 0.35s;
+}
+
+.tile > * { position: relative; z-index: 1; }
+
+.tile::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  bottom: -90px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--c);
+  opacity: 0.1;
+  transition: transform 0.5s, opacity 0.5s;
+  pointer-events: none;
+}
+
+.tile:hover { border-color: var(--gold-line); box-shadow: var(--shadow-lg); }
+.tile:hover::after { transform: scale(1.5); opacity: 0.15; }
+
+.tile[data-tilt]:hover {
+  transform: perspective(900px) translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+
+.tile h3 { margin: 0 0 8px; color: var(--maroon); font-size: 1.25rem; font-weight: 700; }
+.tile p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+.role-tile { display: flex; flex-direction: column; }
+.role-tile .btn { margin-top: auto; align-self: flex-start; }
+.role-tile .role-tile-top { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.role-tile h3 { margin-top: 0; }
+.role-tile p { margin-bottom: 22px; }
+.role-ico {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--maroon);
+  color: var(--sand);
+}
+
+/* ---------- ticked lists + chips ---------- */
+
+.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+.ticks li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background-color: var(--card);
+  color: var(--ink);
+  font-weight: 500;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.ticks li::before {
+  content: "\2713";
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--maroon);
+  color: var(--sand);
+  font-size: 12px;
+}
+
+.ticks li:hover { transform: translateX(6px); border-color: var(--gold-line); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.chips span {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--maroon);
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 0.25s, border-color 0.25s;
+}
+.chips span:hover { transform: translateY(-3px); border-color: var(--gold-line); }
+
+@media (max-width: 900px) {
+  .block { padding: 72px 0; }
+  .split { grid-template-columns: 1fr; gap: 32px; }
+  .grid-3 { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal:not([data-in]) { opacity: 1; transform: none; filter: none; }
+  .reveal[data-in] { animation: none; }
+}

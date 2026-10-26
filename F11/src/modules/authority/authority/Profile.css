@@ -1,0 +1,17 @@
+/* Profile page shell — the content itself is the shared ProfilePage. */
+.profile-page {
+  min-height: 100vh;
+  background: #F8F2E3;
+}
+
+.profile-main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-main { transition: none; }
+}

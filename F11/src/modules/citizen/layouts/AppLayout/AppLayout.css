@@ -1,0 +1,19 @@
+.app-layout {
+  min-height: 100vh;
+}
+
+/* --sidebar-w comes from the shared sidebar: 250px open, 80px collapsed,
+   0 below 960px where the drawer takes over. */
+.app-layout__main {
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: var(--sidebar-w, 0px);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(227, 192, 120, 0.08), transparent 25%),
+    #F8F2E3;
+  transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-layout__main { transition: none; }
+}

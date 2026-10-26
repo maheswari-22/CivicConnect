@@ -1,0 +1,536 @@
+/* =========================================================
+   HISTORY PAGE
+   ========================================================= */
+
+.history-page {
+  width: 100%;
+  min-height: calc(100vh - 40px);
+  padding-bottom: 90px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.history-header h1 {
+  margin: 0;
+
+  color: #560B18;
+
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.history-header p {
+  margin: 8px 0 0;
+
+  color: #6F5B55;
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   HISTORY COUNT
+   ========================================================= */
+
+.history-count {
+  min-width: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 11px 15px;
+
+  border-radius: 14px;
+
+  background: #FFFBF2;
+
+  border: 1px solid #EDE1C4;
+
+  box-shadow:
+    0 6px 18px rgba(59, 1, 11, 0.08);
+}
+
+.history-count strong {
+  color: #560B18;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.history-count span {
+  margin-top: 2px;
+
+  color: #6F5B55;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   THREE HISTORY CARDS
+   ========================================================= */
+
+.history-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   HISTORY CARD
+   ========================================================= */
+
+.history-card {
+  padding: 18px;
+
+  border: 1px solid #E6D8B8;
+
+  border-radius: 18px;
+
+  background: #FFFBF2;
+
+  box-shadow:
+    0 8px 24px rgba(59, 1, 11, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.history-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 14px 30px rgba(59, 1, 11, 0.14);
+}
+
+
+/* =========================================================
+   TASK NAME
+   ========================================================= */
+
+.history-card-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+.history-card-heading h2 {
+  margin: 0;
+
+  color: #75162D;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   COMPLETED BADGE
+   ========================================================= */
+
+.completed-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  background: #e8f8ee;
+
+  color: #21834a;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   TASK DETAILS
+   ========================================================= */
+
+.history-task-details {
+  margin-bottom: 16px;
+
+  padding: 12px 13px;
+
+  border-radius: 10px;
+
+  background: #F8F2E3;
+
+  border-left: 3px solid #F2D9A0;
+}
+
+.history-task-details span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #560B18;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.history-task-details p {
+  margin: 0;
+
+  color: #6F5B55;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   IMAGE SECTION
+   ========================================================= */
+
+.history-image-section {
+  margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   BEFORE / AFTER LABEL
+   ========================================================= */
+
+.history-image-title {
+  width: 90%;
+
+  margin: 0 auto 6px;
+
+  color: #560B18;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+.after-title {
+  color: #21834a;
+}
+
+
+/* =========================================================
+   IMAGE BOX
+   ========================================================= */
+
+.history-image-box {
+  position: relative;
+
+  width: 90%;
+  height: 145px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border-radius: 11px;
+
+  background: #F3EAD3;
+
+  border: 1px solid #E6D8B8;
+}
+
+.history-image-box img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.45s ease;
+}
+
+.history-image-box:hover img {
+  transform: scale(1.1);
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.history-location {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 4px;
+  margin-bottom: 13px;
+
+  color: #6F5B55;
+
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.history-location svg {
+  color: #560B18;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   COMPLETION INFORMATION
+   ========================================================= */
+
+.history-completion {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+.history-completion div {
+  padding: 10px 11px;
+
+  border-radius: 9px;
+
+  background: #F8F2E3;
+}
+
+.history-completion span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #8C7B72;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.history-completion strong {
+  color: #75162D;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.history-status {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding-top: 11px;
+
+  border-top: 1px solid #EDE1C4;
+
+  color: #21834a;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .history-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .history-image-box {
+    width: 92%;
+  }
+
+  .history-image-title {
+    width: 92%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .history-page {
+    padding-bottom: 95px;
+  }
+
+  .history-header {
+    align-items: flex-start;
+
+    margin-bottom: 23px;
+  }
+
+  .history-header h1 {
+    font-size: 30px;
+  }
+
+  .history-header p {
+    font-size: 13px;
+  }
+
+  .history-count {
+    min-width: 74px;
+
+    padding: 9px 11px;
+  }
+
+  .history-count strong {
+    font-size: 21px;
+  }
+
+  .history-count span {
+    font-size: 10px;
+  }
+
+  .history-grid {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+  }
+
+  .history-card {
+    padding: 17px;
+
+    border-radius: 16px;
+  }
+
+  .history-card-heading h2 {
+    font-size: 20px;
+  }
+
+  .completed-badge {
+    font-size: 10px;
+
+    padding: 6px 8px;
+  }
+
+  .history-task-details {
+    padding: 11px 12px;
+  }
+
+  .history-task-details span {
+    font-size: 12px;
+  }
+
+  .history-task-details p {
+    font-size: 13px;
+  }
+
+  .history-image-title {
+    width: 100%;
+
+    font-size: 11px;
+  }
+
+  .history-image-box {
+    width: 100%;
+
+    height: 145px;
+  }
+
+  .history-location {
+    font-size: 13px;
+  }
+
+  .history-completion span {
+    font-size: 10px;
+  }
+
+  .history-completion strong {
+    font-size: 12px;
+  }
+
+  .history-status {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .history-header h1 {
+    font-size: 27px;
+  }
+
+  .history-header p {
+    font-size: 12px;
+  }
+
+  .history-card {
+    padding: 15px;
+  }
+
+  .history-card-heading h2 {
+    font-size: 18px;
+  }
+
+  .history-image-box {
+    width: 100%;
+
+    height: 135px;
+  }
+
+  .history-task-details p {
+    font-size: 13px;
+  }
+
+  .history-location {
+    font-size: 13px;
+  }
+}

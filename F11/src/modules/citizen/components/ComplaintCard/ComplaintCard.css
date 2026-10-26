@@ -1,0 +1,99 @@
+.complaint-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+}
+
+.complaint-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--background-dim);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.complaint-card__body { flex: 1; min-width: 0; }
+
+.complaint-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;          /* emergency + status chips drop under the ID on narrow phones */
+  gap: 4px 8px;
+  margin-bottom: 4px;
+}
+
+.complaint-card__id {
+  white-space: nowrap;      /* an ID like CC-2026-1000 must never break across lines */
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+}
+
+.complaint-card__title {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.complaint-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.complaint-card__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.complaint-card__chevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 12px;
+  transition: transform var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+
+.complaint-card:hover .complaint-card__chevron {
+  transform: translateX(3px);
+  color: var(--primary);
+}
+
+.complaint-card:hover .complaint-card__icon {
+  background: var(--gradient-gold);
+  color: var(--primary-dark);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+
+.complaint-card .status-badge {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.complaint-card:hover .status-badge {
+  transform: scale(1.05);
+}
+
+.complaint-card__worker-bar {
+  margin-top: 10px;
+  height: 4px;
+  width: 100%;
+  border-radius: var(--radius-full);
+  background: var(--background-dim);
+  overflow: hidden;
+}
+
+.complaint-card__worker-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--gradient-gold);
+  transition: width 0.4s var(--ease-out);
+}

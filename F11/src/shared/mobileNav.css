@@ -1,0 +1,453 @@
+/* =========================================================
+   Shared mobile navigation (hamburger + drawer)
+   Visible below 960px only — the same cut-off the Citizen
+   portal uses to swap its sidebar for the mobile layout.
+   ========================================================= */
+
+:root {
+  --cc-maroon: #560B18;
+  --cc-burgundy: #75162D;
+  --cc-gold: #F2D9A0;
+  --cc-gold-deep: #E3C078;
+  --cc-gold-line: #D9B15A;
+  --cc-gold-ink: #94681F;
+  --cc-bg: #F8F2E3;
+  --cc-surface: #FFFBF2;
+  --cc-border: #E6D8B8;
+  --cc-muted: #6F5B55;
+  --cc-danger: #e34d59;
+  --cc-bar-h: 72px;
+}
+
+/* ---------- Hamburger ---------- */
+.cc-menu-btn {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(59, 1, 11, 0.08);
+  border-radius: 12px;
+  background: var(--cc-surface);
+  color: var(--cc-maroon);
+  box-shadow: 0 8px 25px rgba(59, 1, 11, 0.08);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cc-menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(59, 1, 11, 0.13);
+}
+.cc-menu-btn:focus-visible,
+.cc-drawer__close:focus-visible,
+.cc-drawer__link:focus-visible,
+.cc-drawer__logout:focus-visible {
+  outline: 3px solid rgba(117, 22, 45, 0.75);
+  outline-offset: 2px;
+}
+
+/* ---------- Top bar (Authority + Worker; Citizen has its own Header) ---------- */
+.cc-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  height: var(--cc-bar-h);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: var(--cc-bg);
+  border-bottom: 1px solid var(--cc-border);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+.cc-topbar__brand {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cc-maroon);
+  text-decoration: none;
+}
+.cc-topbar__brand img {
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+.cc-topbar__word {
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.cc-topbar__word span {
+  color: var(--cc-gold-ink);
+}
+.cc-topbar__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cc-topbar__avatar {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #560B18 0%, #560B18 55%, #75162D 100%);
+  color: #FFF8EA;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 15px 35px rgba(59, 1, 11, 0.18);
+}
+.cc-topbar__avatar:focus-visible {
+  outline: 3px solid rgba(117, 22, 45, 0.75);
+  outline-offset: 2px;
+}
+
+/* The bar only exists on mobile/tablet. */
+@media (min-width: 960px) {
+  .cc-topbar {
+    display: none;
+  }
+}
+
+/* Reserve space under the fixed bar so no page content hides behind it. */
+@media (max-width: 959px) {
+  body.cc-has-topbar {
+    padding-top: calc(var(--cc-bar-h) + env(safe-area-inset-top, 0px));
+  }
+  .cc-topbar {
+    padding-top: env(safe-area-inset-top, 0px);
+    height: calc(var(--cc-bar-h) + env(safe-area-inset-top, 0px));
+  }
+}
+
+/* Very small phones: logo mark only, so the right-hand buttons never get pushed off. */
+@media (max-width: 359px) {
+  .cc-topbar__word {
+    display: none;
+  }
+  .cc-topbar {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+}
+
+/* ---------- Drawer ---------- */
+.cc-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+}
+.cc-drawer__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(59, 1, 11, 0.55);
+  backdrop-filter: blur(4px);
+  animation: cc-fade 0.2s ease both;
+}
+.cc-drawer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: min(320px, 86vw);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: calc(20px + env(safe-area-inset-top, 0px)) 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--cc-surface);
+  box-shadow: 10px 0 40px rgba(59, 1, 11, 0.2);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  animation: cc-slide 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.cc-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--cc-border);
+}
+.cc-drawer__brand {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cc-drawer__brand img {
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+}
+.cc-drawer__brand strong {
+  display: block;
+  color: var(--cc-maroon);
+  font-size: 1rem;
+}
+.cc-drawer__brand span {
+  display: block;
+  color: var(--cc-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cc-drawer__close {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--cc-bg);
+  color: var(--cc-maroon);
+  cursor: pointer;
+}
+.cc-drawer__nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cc-drawer__link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 50px;
+  padding: 0 14px;
+  border-radius: 12px;
+  color: var(--cc-maroon);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.cc-drawer__link:hover {
+  background: rgba(59, 1, 11, 0.06);
+}
+.cc-drawer__link--active {
+  background: var(--cc-gold-deep);
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(227, 192, 120, 0.18);
+}
+.cc-drawer__badge {
+  margin-left: auto;
+  min-width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--cc-maroon);
+  color: #FFF8EA;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.cc-drawer__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cc-border);
+}
+.cc-drawer__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(59, 1, 11, 0.05);
+}
+.cc-drawer__user > div {
+  min-width: 0;
+}
+.cc-drawer__user strong,
+.cc-drawer__user span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cc-drawer__user strong {
+  color: var(--cc-maroon);
+  font-size: 0.9rem;
+}
+.cc-drawer__user span {
+  color: var(--cc-muted);
+  font-size: 0.76rem;
+}
+.cc-drawer__user .cc-drawer__avatar {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cc-maroon);
+  color: var(--cc-gold);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.cc-drawer__logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cc-danger);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.cc-drawer__logout:hover {
+  background: rgba(227, 77, 89, 0.08);
+}
+
+/* The drawer never exists on desktop, even if left open while resizing. */
+@media (min-width: 960px) {
+  .cc-drawer-root {
+    display: none;
+  }
+}
+
+@keyframes cc-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes cc-slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-drawer,
+  .cc-drawer__scrim {
+    animation: none;
+  }
+  .cc-menu-btn {
+    transition: none;
+  }
+}
+
+
+/* ---------- Footer navigation (Authority + Worker; Citizen has its own) ---------- */
+.cc-bottomnav {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  z-index: 1050;
+  width: min(460px, calc(100% - 24px));
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+  transform: translateX(-50%);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+.cc-bottomnav__inner {
+  display: grid;
+  align-items: stretch;
+  gap: 2px;
+  min-height: 68px;
+  padding: 6px;
+  background: rgba(255, 248, 234, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(59, 1, 11, 0.08);
+  border-radius: 26px;
+  box-shadow: 0 16px 40px rgba(59, 1, 11, 0.18), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.cc-bottomnav__item {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px 2px 10px;
+  border-radius: 20px;
+  color: #8C7B72;
+  font-size: 0.64rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+.cc-bottomnav__item:focus-visible {
+  outline: 3px solid rgba(117, 22, 45, 0.75);
+  outline-offset: 2px;
+}
+.cc-bottomnav__icon {
+  position: relative;
+  display: flex;
+  transition: transform 0.25s ease;
+}
+.cc-bottomnav__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cc-bottomnav__item--active {
+  color: var(--cc-maroon);
+  background: rgba(59, 1, 11, 0.07);
+}
+.cc-bottomnav__item--active .cc-bottomnav__icon { transform: translateY(-2px); }
+.cc-bottomnav__item--active::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  width: 16px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--cc-gold-line);
+}
+.cc-bottomnav__dot {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cc-gold-line);
+  border: 1.5px solid #FFFBF2;
+}
+
+@media (min-width: 480px) {
+  .cc-bottomnav { bottom: 22px; }
+}
+
+/* Footer nav only exists on mobile/tablet; give pages room beneath it. */
+@media (min-width: 960px) {
+  .cc-bottomnav { display: none; }
+}
+@media (max-width: 959px) {
+  body.cc-has-bottomnav {
+    padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 359px) {
+  .cc-bottomnav__label { font-size: 0.58rem; }
+}
+
+/* Map layers must never float above the fixed top / bottom bars. */
+.leaflet-container { z-index: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-bottomnav__item,
+  .cc-bottomnav__icon { transition: none; }
+}

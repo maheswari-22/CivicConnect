@@ -1,0 +1,273 @@
+/* Shared Profile page — one full-width layout for Citizen, Authority and Worker.
+   The page owns its own padding so every portal renders it identically. */
+
+.cc-profile {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 14px 40px;
+  box-sizing: border-box;
+  color: #560B18;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+.cc-profile *,
+.cc-profile *::before,
+.cc-profile *::after { box-sizing: border-box; }
+
+/* ---------- Banner ---------- */
+.cc-profile__banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+  padding: 26px 20px;
+  overflow: hidden;
+  border-radius: 24px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 88% 30%, rgba(227, 192, 120, 0.16), transparent 30%),
+    linear-gradient(135deg, #560B18, #560B18 58%, #75162D);
+  box-shadow: 0 20px 45px rgba(59, 1, 11, 0.18);
+}
+.cc-profile__banner::before {
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: -110px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 248, 234, 0.035);
+  pointer-events: none;
+}
+
+.cc-profile__avatar {
+  position: relative;
+  flex: 0 0 auto;
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #F2D9A0;
+  color: #560B18;
+  font-size: 1.9rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 6px rgba(227, 192, 120, 0.22), 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.cc-profile__who {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.cc-profile .cc-profile__who h1 {
+  max-width: 100%;
+  margin: 0;
+  color: #FFF8EA;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.cc-profile .cc-profile__who p { margin: 0; color: rgba(255, 248, 234, 0.72); font-size: 0.92rem; }
+
+.cc-profile__status {
+  margin-top: 8px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: rgba(54, 211, 153, 0.16);
+  border: 1px solid rgba(54, 211, 153, 0.35);
+  color: #7ff0c2;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ---------- Stats (inside the banner) ---------- */
+.cc-profile__stats {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cc-profile__stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 6px;
+  border-radius: 16px;
+  background: rgba(255, 248, 234, 0.08);
+  border: 1px solid rgba(255, 248, 234, 0.1);
+  text-align: center;
+}
+.cc-profile__stats strong { color: #F2D9A0; font-size: 1.4rem; font-weight: 800; line-height: 1.1; }
+.cc-profile__stats span { color: rgba(255, 248, 234, 0.78); font-size: 0.72rem; line-height: 1.25; }
+
+/* ---------- Details + actions ---------- */
+/* One column on every screen: Profile details, then the account actions. */
+.cc-profile__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cc-profile__heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.cc-profile__heading-row .cc-profile__heading { margin: 0; }
+
+.cc-profile__edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  color: #560B18;
+  background: #F3EAD3;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.cc-profile__edit:hover { background: #E3C078; }
+.cc-profile__edit:focus-visible { outline: 3px solid rgba(117, 22, 45, 0.75); outline-offset: 2px; }
+
+.cc-profile .cc-profile__heading {
+  margin: 0 0 14px;
+  color: #560B18;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.cc-profile__card {
+  min-width: 0;
+  padding: 22px 20px;
+  background: #FFFBF2;
+  border: 1px solid #EDE1C4;
+  border-radius: 22px;
+  box-shadow: 0 6px 18px rgba(59, 1, 11, 0.08);
+}
+.cc-profile__side { min-width: 0; }
+
+.cc-profile__details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 0;
+}
+.cc-profile__row { min-width: 0; display: flex; align-items: center; gap: 14px; }
+.cc-profile__row-icon {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #F3EAD3;
+  color: #560B18;
+}
+.cc-profile__row > div { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.cc-profile__row dt { color: #8C7B72; font-size: 0.74rem; }
+.cc-profile__row dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.cc-profile__actions { display: flex; flex-direction: column; gap: 10px; }
+
+.cc-profile__action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #FFFBF2;
+  border: 1px solid #EDE1C4;
+  border-radius: 20px;
+  color: #560B18;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cc-profile__action:hover { border-color: #D8C7A0; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(59, 1, 11, 0.08); }
+.cc-profile__action:focus-visible { outline: 3px solid rgba(117, 22, 45, 0.75); outline-offset: 2px; }
+
+.cc-profile__action-icon {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #F3EAD3;
+  color: #560B18;
+}
+.cc-profile__action-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.cc-profile__action-text strong { font-size: 0.92rem; font-weight: 600; }
+.cc-profile__action-text small { color: #6F5B55; font-size: 0.78rem; line-height: 1.35; }
+.cc-profile__chevron { flex: 0 0 auto; color: #8C7B72; }
+
+.cc-profile__action--danger { color: #e34d59; }
+.cc-profile__action--danger .cc-profile__action-icon { background: #fdeae6; color: #e34d59; }
+
+/* ---------- Tablet ---------- */
+@media (min-width: 601px) {
+  .cc-profile { padding: 28px 22px 48px; }
+}
+@media (min-width: 640px) {
+  .cc-profile__details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
+}
+
+/* ---------- Desktop: banner in one row, details in three columns ---------- */
+@media (min-width: 960px) {
+  .cc-profile { padding: 28px 28px 56px; }
+
+  .cc-profile__banner {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: 32px 36px;
+    text-align: left;
+  }
+  .cc-profile__avatar { width: 104px; height: 104px; font-size: 2.4rem; }
+  .cc-profile__who { flex: 1 1 auto; align-items: flex-start; }
+  .cc-profile .cc-profile__who h1 { font-size: 2rem; }
+  .cc-profile__stats { width: auto; flex: 0 0 auto; grid-template-columns: repeat(3, 120px); gap: 12px; }
+
+  .cc-profile__details { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cc-profile__card { padding: 26px 28px; }
+}
+
+@media (max-width: 359px) {
+  .cc-profile { padding-inline: 12px; }
+  .cc-profile__card { padding: 16px; }
+  .cc-profile__stats strong { font-size: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-profile__action { transition: none; }
+}

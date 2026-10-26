@@ -1,0 +1,6 @@
+/* Layout lives in the shared ProfilePage; only the Edit Profile form is citizen-specific. */
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

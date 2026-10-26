@@ -1,0 +1,86 @@
+:root {
+  /* ===== Brand — Champagne Beige / Burgundy / Sand Gold (60 · 30 · 10) ===== */
+  --primary: #560B18;        /* Dark Maroon — chrome, headers, nav */
+  --primary-dark: #3B010B;   /* Deep Wine — headings, hero backdrops */
+  --primary-light: #75162D;  /* Burgundy — hovers, gradients */
+  --secondary: #75162D;      /* Burgundy — supporting tone in hero gradients */
+  --accent: #E3C078;         /* sand gold, deepened so it reads on beige — CTA / active state */
+  --accent-dark: #94681F;    /* gold ink — gold text on beige */
+  --accent-light: #F2D9A0;   /* Sand Gold — on wine surfaces, hover lift */
+
+  /* ===== Neutrals / surfaces ===== */
+  --background: #F8F2E3;
+  --background-dim: #F3EAD3;
+  --surface: #FFFBF2;
+  --surface-raised: #FFFBF2;
+  --border: #E6D8B8;
+  --border-strong: #D8C7A0;
+
+  --text-primary: #560B18;
+  --text-secondary: #6F5B55;
+  --text-muted: #8C7B72;
+  --text-on-dark: #FFF8EA;
+  --text-on-dark-dim: rgba(255, 248, 234, 0.72);
+
+  /* ===== Status ===== */
+  --success: #20A66A;
+  --success-bg: #E5F7EF;
+  --warning: #B8893A;
+  --warning-bg: #F8EBC8;
+  --error: #E34D59;
+  --error-bg: #FDEAE6;
+  --info: #560B18;
+  --info-bg: rgba(59, 1, 11, 0.09);
+
+  /* ===== Typography ===== */
+  --font-display: "IBM Plex Sans", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+
+  /* ===== Radius ===== */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+  --radius-button: 13px;
+  --radius-full: 999px;
+
+  /* ===== Shadow — deep-wine tinted ===== */
+  --shadow-sm: 0 6px 18px rgba(59, 1, 11, 0.08);
+  --shadow-md: 0 12px 30px rgba(59, 1, 11, 0.12);
+  --shadow-lg: 0 20px 50px rgba(59, 1, 11, 0.16);
+  --shadow-gold: 0 10px 25px rgba(227, 192, 120, 0.18);
+  --shadow-wine: 0 15px 35px rgba(59, 1, 11, 0.18);
+
+  /* ===== Motion ===== */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 450ms;
+
+  /* ===== Layout ===== */
+  --max-width: 1180px;
+  --nav-height: 72px;
+  --bottom-nav-height: 72px;
+  --sidebar-width: 250px;
+  --sidebar-width-collapsed: 84px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* ===== Gradients — hero / card treatments ===== */
+  --gradient-hero: linear-gradient(135deg, #560B18 0%, #560B18 55%, #75162D 100%);
+  --gradient-gold: linear-gradient(135deg, #F2D9A0 0%, #E3C078 100%);
+  --gradient-surface: linear-gradient(180deg, #FFFBF2 0%, #F8F2E3 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 248, 234,0.14) 0%, rgba(255, 248, 234,0.04) 100%);
+}
+
+[data-theme='dark'] {
+  --background: #3B010B;
+  --background-dim: #3B010B;
+  --surface: #560B18;
+  --surface-raised: #3B010B;
+  --border: #75162D;
+  --border-strong: rgba(255, 248, 234, 0.28);
+  --text-primary: #FFF8EA;
+  --text-secondary: rgba(255, 248, 234, 0.72);
+  --text-muted: rgba(255, 248, 234, 0.5);
+}

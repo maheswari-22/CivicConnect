@@ -1,0 +1,30 @@
+.cc-sidebar-toggle {
+  position: absolute;
+  top: 28px;
+  right: -16px;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 3px solid #F8F2E3;
+  border-radius: 50%;
+  background: #560B18;
+  color: #FFF8EA;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59, 1, 11, 0.25);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.cc-sidebar-toggle:hover {
+  background: #E3C078;
+  color: #560B18;
+  transform: scale(1.1);
+}
+
+.cc-sidebar-toggle:focus-visible {
+  outline: 3px solid rgba(117, 22, 45, 0.75);
+  outline-offset: 2px;
+}

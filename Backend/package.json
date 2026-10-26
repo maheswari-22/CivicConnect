@@ -1,0 +1,45 @@
+{
+  "name": "civicconnect-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "migrate": "node src/db/migrate.js",
+    "seed": "node -e \"import('./src/db/seed.js').then(async ({seed}) => { await seed(); process.exit(0); })\"",
+    "reset": "node src/db/reset.js",
+    "db:check": "node src/db/check.js",
+    "mail:test": "node src/mail/check.js",
+    "format": "prettier --write \"src/**/*.js\" \"tests/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"tests/**/*.js\"",
+    "authority:create": "node src/db/create-authority.js",
+    "authority:invite": "node src/db/create-invite.js",
+    "gen:secret": "node src/db/gen-secret.js",
+    "setup:env": "node src/db/setup-env.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.0",
+    "pg": "^8.16.3",
+    "sharp": "^0.34.5",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "eslint": "^9.37.0",
+    "prettier": "^3.6.2"
+  }
+}

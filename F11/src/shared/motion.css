@@ -1,0 +1,72 @@
+@import "./severity.css";
+
+/* ==========================================================================
+   Shared motion for the three portals — the same language as the landing page:
+   rise + un-blur reveal with a stagger, soft lift on hover, press feedback,
+   progress bars that fill in, and emergency / overdue pulses.
+   Everything is switched off for visitors who ask for reduced motion.
+   ========================================================================== */
+
+:root {
+  --cc-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- scroll reveal (see PortalMotion.jsx) ---------- */
+[data-rv="wait"] {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+}
+[data-rv="in"] {
+  animation: ccRise 0.75s var(--cc-ease) var(--d, 0s) backwards;
+}
+@keyframes ccRise {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+}
+@keyframes ccPop {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+}
+@keyframes ccGrowX {
+  from { transform: scaleX(0); }
+}
+@keyframes ccFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* ---------- hover lift and press feedback ---------- */
+html[data-motion="on"] body :is(
+  .stat-card, .cc-stat, .dashboard-card, .overview-card, .quick-action-card, .quick-card,
+  .complaint-card, .completed-card, .pending-card, .tracking-card, .assigned-task-card, .history-card,
+  .workers-card, .category-card, .notif-card
+) {
+  transition: transform 0.35s var(--cc-ease), box-shadow 0.35s var(--cc-ease), border-color 0.25s ease;
+}
+html[data-motion="on"] body :is(
+  .stat-card, .cc-stat, .dashboard-card, .overview-card, .quick-action-card, .quick-card,
+  .complaint-card, .completed-card, .pending-card, .tracking-card, .assigned-task-card, .history-card,
+  .workers-card, .category-card
+):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(59, 1, 11, 0.14);
+}
+html[data-motion="on"] body :is(button, a)[class*="button"]:not(:disabled):active,
+html[data-motion="on"] body :is(button, a)[class*="btn"]:not(:disabled):active {
+  transform: scale(0.97);
+}
+html[data-motion="on"] body :is(button, a)[class*="button"],
+html[data-motion="on"] body :is(button, a)[class*="btn"] {
+  transition: transform 0.18s var(--cc-ease), box-shadow 0.25s ease, background-color 0.25s ease, filter 0.25s ease;
+}
+
+/* ---------- progress bars fill in when they appear ---------- */
+.tracking-progress-fill, .aw-bar-fill, .complaint-card__worker-bar-fill, .worker-progress__bar-fill {
+  transform-origin: left center;
+  animation: ccGrowX 1s var(--cc-ease) 0.25s backwards;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-rv] { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; }
+  .tracking-progress-fill, .aw-bar-fill, .complaint-card__worker-bar-fill, .worker-progress__bar-fill { animation: none; }
+}

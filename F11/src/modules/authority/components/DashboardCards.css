@@ -1,0 +1,344 @@
+/* =========================================
+   DASHBOARD CARDS CONTAINER
+   ========================================= */
+
+.dashboard-cards {
+
+    margin-left: 0;
+
+    padding: 25px 30px 10px 30px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   COMMON CARD
+   ========================================= */
+
+.dashboard-card {
+
+    height: 148px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+
+    opacity: 0;
+
+    animation:
+        cardAppear 0.8s ease-out forwards;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
+}
+
+
+/* =========================================
+   PROFESSIONAL CARD ENTRANCE
+   ========================================= */
+
+@keyframes cardAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.96);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.01);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   CARD ANIMATION DELAY
+   Cards appear one after another
+   ========================================= */
+
+.total-card {
+
+    background: #560B18;
+
+    animation-delay: 0.1s;
+
+}
+
+
+.pending-card {
+
+    background: #B8893A;
+
+    animation-delay: 0.2s;
+
+}
+
+
+.completed-card {
+
+    background: #356B65;
+
+    animation-delay: 0.3s;
+
+}
+
+
+.alerts-card {
+
+    background: #884444;
+
+    animation-delay: 0.4s;
+
+}
+
+
+/* =========================================
+   CARD TITLE
+   ========================================= */
+
+.dashboard-card h3 {
+
+    margin: 0 0 12px 0;
+
+    color: #FFF8EA;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================
+   CARD NUMBER
+   ========================================= */
+
+.dashboard-card h2 {
+
+    margin: 0;
+
+    color: #FFF8EA;
+
+    font-size: 38px;
+
+    font-weight: 700;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+/* =========================================
+   DECORATIVE CIRCLE
+   ========================================= */
+
+.dashboard-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    right: -25px;
+
+    top: -35px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(227, 192, 120, 0.35);
+
+    transition:
+        transform 0.5s ease;
+
+}
+
+
+/* =========================================
+   HOVER EFFECT
+   ========================================= */
+
+.dashboard-card:hover {
+
+    transform:
+        translateY(-7px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.20);
+
+}
+
+
+.dashboard-card:hover h2 {
+
+    transform: scale(1.06);
+
+}
+
+
+.dashboard-card:hover::after {
+
+    transform:
+        scale(1.12)
+        rotate(8deg);
+
+}
+
+
+/* =========================================
+   TOTAL COMPLAINTS
+   ========================================= */
+
+.total-card h3,
+.total-card h2 {
+
+    color: #FFF8EA;
+
+}
+
+
+/* =========================================
+   PENDING
+   ========================================= */
+
+.pending-card h3,
+.pending-card h2 {
+
+    color: #FFF8EA;
+
+}
+
+
+/* =========================================
+   COMPLETED
+   ========================================= */
+
+.completed-card h3,
+.completed-card h2 {
+
+    color: #FFF8EA;
+
+}
+
+
+/* =========================================
+   ALERTS
+   ========================================= */
+
+.alerts-card h3,
+.alerts-card h2 {
+
+    color: #FFF8EA;
+
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .dashboard-cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        padding:
+            20px;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .dashboard-cards {
+
+        grid-template-columns:
+            1fr;
+
+        padding:
+            15px;
+
+    }
+
+
+    .dashboard-card {
+
+        height: 130px;
+
+    }
+
+
+    .dashboard-card h2 {
+
+        font-size: 34px;
+
+    }
+
+}

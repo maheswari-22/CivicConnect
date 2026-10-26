@@ -1,0 +1,457 @@
+/* =========================================================
+   ROLE HERO (shared by the Citizen, Authority and Worker home pages)
+   One banner, one role photo on the right, identical in all three.
+   ========================================================= */
+
+.cc-hero-wrap {
+  width: 100%;
+  container-type: inline-size;
+  container-name: cchero;
+}
+
+.cc-hero {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  padding: 20px 32px;
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(227, 192, 120, 0.14),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #560B18, #560B18 58%, #75162D);
+
+  box-shadow: 0 20px 45px rgba(59, 1, 11, 0.18);
+
+  font-family: inherit;
+}
+
+.cc-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -100px;
+  top: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 248, 234, 0.035);
+
+  pointer-events: none;
+}
+
+.cc-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  left: -90px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(227, 192, 120, 0.05);
+
+  pointer-events: none;
+}
+
+
+/* ---------- Text ---------- */
+
+.cc-hero__content {
+  position: relative;
+  z-index: 3;
+
+  max-width: min(520px, 54%);
+}
+
+.cc-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 12px;
+
+  border: 1px solid rgba(227, 192, 120, 0.2);
+  border-radius: 50px;
+
+  background: rgba(227, 192, 120, 0.08);
+
+  color: #F2D9A0;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cc-hero__badge > span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #F2D9A0;
+
+  box-shadow: 0 0 10px rgba(227, 192, 120, 0.8);
+}
+
+.cc-hero .cc-hero__content h2 {
+  margin: 14px 0 10px;
+
+  color: #FFF8EA;
+
+  font-family: inherit;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -1.2px;
+}
+
+.cc-hero .cc-hero__content h2 strong {
+  color: #F2D9A0;
+
+  font-weight: 800;
+}
+
+.cc-hero .cc-hero__content p {
+  max-width: 470px;
+
+  margin: 0 0 18px;
+
+  color: rgba(255, 248, 234, 0.72);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.cc-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 12px 18px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #F2D9A0;
+  color: #560B18;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(227, 192, 120, 0.18);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.cc-hero__button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 30px rgba(227, 192, 120, 0.25);
+}
+
+.cc-hero__button:focus-visible {
+  outline: 2px solid #FFFBF2;
+  outline-offset: 3px;
+}
+
+
+/* ---------- Role photo ----------
+   A framed, rounded photo card on the right with a gold hairline, a soft glow,
+   a slow decorative ring and two small glass info chips. Each role has its own
+   focus point (set in RoleHero.jsx) so the face is never cropped. */
+
+.cc-hero__visual {
+  position: absolute;
+  z-index: 1;
+
+  top: 20px;
+  right: 28px;
+  bottom: 20px;
+
+  width: min(40%, 380px);
+
+  pointer-events: none;
+}
+
+.cc-hero__ring {
+  position: absolute;
+  inset: -14px;
+
+  border: 1px dashed rgba(242, 217, 160, 0.28);
+  border-radius: 32px;
+
+  animation: cc-hero-ring 26s linear infinite;
+}
+
+.cc-hero__frame {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(242, 217, 160, 0.55);
+  border-radius: 24px;
+
+  background: #3B010B;
+
+  box-shadow:
+    0 0 0 6px rgba(242, 217, 160, 0.07),
+    0 22px 40px rgba(20, 0, 4, 0.45);
+}
+
+/* soft wine tint from the lower edge keeps the photo tied to the banner */
+.cc-hero__frame::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(180deg, transparent 55%, rgba(59, 1, 11, 0.55) 100%);
+
+  pointer-events: none;
+}
+
+.cc-hero__photo {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  user-select: none;
+
+  animation: cc-hero-zoom 14s ease-in-out infinite alternate;
+}
+
+.cc-hero__chip {
+  position: absolute;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(242, 217, 160, 0.5);
+  border-radius: 999px;
+
+  background: rgba(86, 11, 24, 0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  color: #FFF8EA;
+
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+
+  box-shadow: 0 10px 22px rgba(20, 0, 4, 0.35);
+}
+
+.cc-hero__chip svg {
+  flex: none;
+  color: #F2D9A0;
+}
+
+.cc-hero__chip--a {
+  left: -30px;
+  bottom: 26px;
+
+  animation: cc-hero-float 6s ease-in-out infinite;
+}
+
+.cc-hero__chip--b {
+  right: 14px;
+  top: 14px;
+
+  animation: cc-hero-float 6s ease-in-out -3s infinite;
+}
+
+@keyframes cc-hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes cc-hero-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+@keyframes cc-hero-ring {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-hero__ring,
+  .cc-hero__photo,
+  .cc-hero__chip {
+    animation: none;
+  }
+}
+
+
+/* ---------- Responsive (based on the banner's own width, so it
+   adapts correctly whether or not a sidebar is taking space) ---------- */
+
+@container cchero (max-width: 900px) {
+  .cc-hero {
+    min-height: 260px;
+
+    padding: 18px 26px;
+  }
+
+  .cc-hero__content {
+    max-width: 56%;
+  }
+
+  .cc-hero .cc-hero__content p {
+    font-size: 13px;
+  }
+
+  .cc-hero__visual {
+    right: 24px;
+
+    width: 38%;
+  }
+
+  .cc-hero__chip--b {
+    display: none;
+  }
+
+  .cc-hero__chip--a {
+    left: 10px;
+    bottom: 12px;
+  }
+}
+
+@container cchero (max-width: 600px) {
+  .cc-hero {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    min-height: 0;
+
+    padding: 20px 17px 0;
+
+    border-radius: 22px;
+  }
+
+  .cc-hero__content {
+    width: 100%;
+    max-width: none;
+
+    text-align: center;
+  }
+
+  .cc-hero__badge {
+    font-size: 10px;
+
+    padding: 6px 11px;
+  }
+
+  .cc-hero .cc-hero__content h2 {
+    font-size: 26px;
+
+    margin: 12px 0 8px;
+  }
+
+  .cc-hero .cc-hero__content p {
+    max-width: 400px;
+
+    font-size: 12.5px;
+
+    margin: 0 auto 14px;
+  }
+
+  .cc-hero__button {
+    width: 100%;
+
+    font-size: 12.5px;
+
+    padding: 11px 16px;
+  }
+
+  /* Photo sits under the text as a centred card */
+  .cc-hero__visual {
+    position: relative;
+
+    top: auto;
+    right: auto;
+    bottom: auto;
+
+    width: min(78cqw, 300px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+
+    margin: 22px auto 24px;
+  }
+
+  .cc-hero__ring {
+    inset: -10px;
+
+    border-radius: 28px;
+  }
+
+  .cc-hero__chip--a {
+    display: inline-flex;
+
+    left: 50%;
+    bottom: -14px;
+
+    transform: translateX(-50%);
+
+    animation: none;
+  }
+}
+
+@container cchero (max-width: 360px) {
+  .cc-hero {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .cc-hero .cc-hero__content h2 {
+    font-size: 23px;
+  }
+
+  .cc-hero__chip--a {
+    font-size: 10.5px;
+    padding: 7px 10px;
+  }
+}

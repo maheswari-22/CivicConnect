@@ -1,0 +1,86 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#F8F2E3;
+    overflow-x:hidden;
+    font-family:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    color:#560B18;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+input,
+select,
+textarea,
+button{
+    font-family:inherit;
+}
+
+/* Icons that replace old text arrows */
+.back-home-card{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+}
+
+.change-password-eye{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* Fix Welcome Page text visibility */
+
+.welcome-content h1 {
+    color: #560B18 !important;
+}
+
+.welcome-time {
+    color: #8A6218 !important;
+}
+
+.welcome-message {
+    color: #560B18 !important;
+}
+
+.welcome-submessage {
+    color: #6F5B55 !important;
+}
+
+.welcome-feature h3 {
+    color: #560B18 !important;
+}
+
+.welcome-feature p {
+    color: #6F5B55 !important;
+}
+
+.loading-text {
+    color: #560B18 !important;
+}
+
+.redirect-text {
+    color: #8C7B72 !important;
+}

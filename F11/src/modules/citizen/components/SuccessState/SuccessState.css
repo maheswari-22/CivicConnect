@@ -1,0 +1,54 @@
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 8px;
+}
+
+.success-state__ring {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.success-state__check {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.4);
+  animation: checkPop 0.4s var(--ease-out) 0.55s forwards;
+}
+
+.success-state__ring-progress {
+  stroke-dashoffset: 220;
+  animation: ringDraw 0.8s var(--ease-out) forwards;
+}
+
+.success-state__title {
+  margin-top: 6px;
+  opacity: 0;
+  animation: fadeUp 0.35s var(--ease-out) 0.7s forwards;
+}
+
+.success-state__desc {
+  max-width: 36ch;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeUp 0.35s var(--ease-out) 0.8s forwards;
+}
+
+.success-state__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 340px;
+  margin-top: 12px;
+  opacity: 0;
+  animation: fadeUp 0.35s var(--ease-out) 0.9s forwards;
+}

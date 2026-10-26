@@ -1,0 +1,138 @@
+/* Page shell, header and stat cards come from shared/PortalPage (same as
+   the Authority and Worker dashboards). Only the citizen sections live here. */
+.dashboard__section { margin-top: 28px; }
+
+.dashboard__section-title { font-size: 1.15rem; margin-bottom: 16px; }
+
+.dashboard__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.dashboard__section-head .dashboard__section-title { margin-bottom: 0; }
+
+.dashboard__see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.dashboard__see-all:hover { text-decoration: underline; }
+
+.dashboard__actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.dashboard__action {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 20px 18px;
+  overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out), background var(--dur-slow) var(--ease-out);
+}
+
+.dashboard__actions .dashboard__action:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.dashboard__actions .dashboard__action:active { transform: translateY(-6px) scale(0.97); }
+
+.dashboard__action-icon {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--background-dim);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+
+.dashboard__action:hover .dashboard__action-icon {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.dashboard__action-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.94rem;
+}
+
+.dashboard__action-desc {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.dashboard__action-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--primary);
+  color: #FFF8EA;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.68rem;
+  min-width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+.dashboard__action-badge--accent {
+  background: var(--accent);
+  color: var(--primary-dark);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Active state — the Quick Action matching the current route turns gold.
+   Determined purely from the router's current pathname (see Dashboard.jsx),
+   never hardcoded to a specific card. */
+.dashboard__action--active {
+  background: var(--gradient-gold);
+  border-color: transparent;
+  box-shadow: var(--shadow-gold);
+}
+.dashboard__action--active .dashboard__action-icon {
+  background: rgba(59, 1, 11, 0.14);
+  color: var(--primary-dark);
+}
+.dashboard__action--active .dashboard__action-label,
+.dashboard__action--active .dashboard__action-desc {
+  color: var(--primary-dark);
+}
+.dashboard__action--active .dashboard__action-badge:not(.dashboard__action-badge--accent) {
+  background: var(--primary-dark);
+}
+.dashboard__actions .dashboard__action--active:hover {
+  box-shadow: 0 20px 44px rgba(227, 192, 120, 0.5);
+}
+
+.dashboard__complaints {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 900px) {
+  .dashboard__complaints { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+}
+
+@media (min-width: 640px) {
+  .dashboard__actions { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .dashboard__actions { grid-template-columns: repeat(5, 1fr); }
+}

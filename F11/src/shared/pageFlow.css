@@ -1,0 +1,47 @@
+/* Page flow: first paint, fade between apps, boot splash. Loaded eagerly by main.jsx. */
+
+html { background: #F8F2E3; }
+
+/* The next app fades in instead of popping in. */
+#root { animation: ccRootIn 0.35s ease-out both; }
+@keyframes ccRootIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* The current app fades out just before the browser leaves it (see pageFlow.js). */
+html.is-leaving #root {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+
+/* Shown while a lazily loaded app downloads, so the screen is never blank or white. */
+.cc-boot {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #F8F2E3;
+}
+.cc-boot__ring {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(86, 11, 24, 0.14);
+  border-top-color: #560B18;
+  border-radius: 50%;
+  animation: ccBootSpin 0.8s linear infinite;
+}
+@keyframes ccBootSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  #root { animation: none; }
+  html.is-leaving #root { transition: none; }
+  .cc-boot__ring { animation-duration: 2.4s; }
+}
+
+.visually-hidden-boot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -1,0 +1,83 @@
+:root {
+  /* Brand palette — Champagne Beige / Burgundy / Sand Gold (60 · 30 · 10)
+     60%  beige   -> page, cards, borders
+     30%  wine    -> navbar, hero panel, buttons, headings, footer
+     10%  gold    -> accents, highlights, active states                    */
+  --maroon: #560B18;      /* Dark Maroon  - primary dark surface + headings */
+  --burgundy: #75162D;    /* Burgundy     - hovers, links, gradient lift    */
+  --wine: #3B010B;        /* Deep Wine    - body copy, deepest shadows      */
+
+  --sand: #F2D9A0;        /* Sand Gold    - accent on wine surfaces         */
+  --sand-deep: #E3C078;   /* gold fill that stays visible on beige          */
+  --gold-line: #D9B15A;   /* thin gold lines / hover borders on beige       */
+  --gold-ink: #94681F;    /* gold text on beige (4.5:1+)                    */
+
+  --cream: #F2E5C6;       /* Champagne Beige                                */
+  --page: #F8F2E3;        /* main page background                           */
+  --bg-soft: #F3EAD3;     /* alternate section background                   */
+  --card: #FFFBF2;        /* cards / panels                                 */
+  --on-dark: #FFF8EA;     /* text on wine surfaces                          */
+  --white: #FFFFFF;       /* pure white - only behind logo artwork          */
+
+  --ink: #3B010B;         /* body copy */
+  --muted: #6F5B55;       /* secondary / supporting text */
+  --border: #E6D8B8;
+
+  --font-display: "Newsreader", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --shadow-sm: 0 2px 10px rgba(59, 1, 11, 0.07);
+  --shadow-md: 0 10px 30px rgba(59, 1, 11, 0.11);
+  --shadow-lg: 0 20px 45px rgba(59, 1, 11, 0.17);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--page);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--burgundy);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* On wine surfaces the burgundy ring would vanish, so the ring switches to sand. */
+.navbar :focus-visible,
+.hero-panel :focus-visible,
+.cta :focus-visible,
+.footer :focus-visible,
+.intro-loader:focus-visible {
+  outline-color: var(--sand);
+}
