@@ -6,7 +6,7 @@
    - Every call resolves to { ok, data, error } and never throws.
    ========================================================================== */
 
-export const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:4000").replace(/\/$/, "");
+export const API_URL = (import.meta.env.VITE_API_URL || "https://civicconnect-backend-jz4r.onrender.com").replace(/\/+$/, "");
 
 const TOKEN_KEY = (role) => `civicconnect.token.${role}`;
 
